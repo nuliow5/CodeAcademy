@@ -1,4 +1,4 @@
-package org.Basic.ProcectWallet;
+package org.TrainingInFreeTime.LogicalTasks.ProcectWallet;
 
 import java.util.Collections;
 import java.util.LinkedList;

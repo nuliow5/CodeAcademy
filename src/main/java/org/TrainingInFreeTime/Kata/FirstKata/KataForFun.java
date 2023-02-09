@@ -1,6 +1,4 @@
-package org.Basic.Kata;
-
-import java.util.Arrays;
+package org.TrainingInFreeTime.Kata.FirstKata;
 
 public class KataForFun {
     public static void main(String[] args) {
