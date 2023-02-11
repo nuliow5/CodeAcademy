@@ -33,9 +33,14 @@ public class Game {
                 start = false;
             } else if (inputMenu == 1) {
                 System.out.println("How much money do you want to bet?");
-                player.setBetMoney(scanner.nextInt()); // kaip sutvarkyti?
+                player.setBetMoney(scanner.nextInt());
+                if (player.getBetMoney() == -1){
+                    continue;
+                }
+
                 System.out.println("Guess a number [1-36]");
                 int inputGuessNumber = scanner.nextInt();
+
 
                 //game logic
                 if (inputGuessNumber > 0 && inputGuessNumber <= 36 ){

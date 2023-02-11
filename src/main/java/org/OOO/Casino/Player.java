@@ -48,7 +48,7 @@ public class Player {
     }
 
     public void setBetMoney(int betMoney) {
-//        this.betMoney = 0;
+        this.betMoney = -1;
         if (betMoney <= this.allMoney){
             this.betMoney = betMoney;
             this.allMoney -= this.betMoney;
