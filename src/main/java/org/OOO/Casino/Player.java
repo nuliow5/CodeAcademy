@@ -48,8 +48,8 @@ public class Player {
     }
 
     public void setBetMoney(int betMoney) {
-        this.betMoney = 0;
-        if (betMoney >= this.allMoney){
+//        this.betMoney = 0;
+        if (betMoney <= this.allMoney){
             this.betMoney = betMoney;
             this.allMoney -= this.betMoney;
         } else {
