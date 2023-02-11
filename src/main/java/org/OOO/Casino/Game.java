@@ -6,7 +6,7 @@ public class Game {
     private final String CONGRATULATION = "\u001B[32mCONGRATULATION, TOU WIN! %s$, in your wallet is %s$\n";
     private final String LOSE = "\u001B[31mYOU LOSE %s$, in your wallet is %s$\n";
     Scanner scanner = new Scanner(System.in);
-    private Player player = new Player("Player");
+    private final Player player = new Player("Player");
     Casino casino = new Casino();
     public void gameStart(){
         boolean start = true;
@@ -21,7 +21,7 @@ public class Game {
             //print menu
             casino.setCasinoNumber();
             casino.setCasinoColor();
-            System.out.printf("\u001B[40m\u001B[37m" +
+            System.out.print("\u001B[40m\u001B[37m" +
                     "#1 Bet on a number [1-36]\n" +
                     "#2 Bet on color [red or black]\n" +
                     "#3 print your info\n" +
