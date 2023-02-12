@@ -7,7 +7,7 @@ public class Casino {
 
     private final int WIN_IN_GUESS_NUMBER = 35;
     private final int WIN_IN_GUESS_COLOR = 2;
-    //    private Player player;
+
     private String casinoColor;
     private int casinoNumber;
 
@@ -54,10 +54,9 @@ public class Casino {
     }
 
     //print methods
-    public void printRolledOut(){
+    public void printRolledOut() {
         System.out.printf(CASINO_ROLLED_OUT, getCasinoNumber(), getCasinoColor());
     }
-
 
 
 }
