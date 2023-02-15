@@ -17,17 +17,19 @@ public class Registra {
         printAllRegisterList(registerList);
         System.out.println("-----------------------------------");
 
-        //print owner
-        printCarOwner(registerList, "ERT987");
-        System.out.println("-----------------------------------");
 
+        printCarOwner(registerList, "ERT987");
+
+        printCarNumbers(registerList, 2022);
+
+        printOwnerInfo(registerList, "porsche panamera");
 
     }
 
 
     public static void simulation(){
         registerList.put(1, new Car(
-                "vw passat",
+                "vw_passat",
                 "AAB123",
                 LocalDate.of(2022, 02, 03),
                 "Petras"));
@@ -61,7 +63,6 @@ public class Registra {
                     hashMap.get(entry.getKey()).getCarOwner()
             );
 
-
         }
     }
     public void printCarOwner(HashMap<Integer, Car> hashMap, String carNumber){
@@ -79,7 +80,17 @@ public class Registra {
 
     public void printCarNumbers(HashMap<Integer, Car> hashMap, int year){
         for (Map.Entry<Integer, Car> entry : hashMap.entrySet()){
-//            if (year == hashMap.get(entry).getRegisterDate(LocalDate.))
+            if (year == hashMap.get(entry.getKey()).getRegisterDate().getYear()){
+                System.out.println(year + " registered " + hashMap.get(entry.getKey()).getCarNumber());
+            }
+        }
+    }
+
+    public void printOwnerInfo(HashMap<Integer, Car> hashMap, String carModel){
+        for (Map.Entry<Integer, Car> entry : hashMap.entrySet()){
+            if (carModel.equals(hashMap.get(entry.getKey()).getCarModel())){
+                System.out.println(carModel + " have " + hashMap.get(entry.getKey()).getCarOwner());
+            }
         }
     }
 
