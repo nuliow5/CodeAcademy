@@ -4,6 +4,8 @@ import java.time.LocalDate;
 public class Income {
     private final static String INFO = "You received the income from | %s,| %s$, " +
             "| date - %s | order type - %s\n";
+
+    private final static String INCOME_OUT_PRINT_TOP = "COMPANY | INCOME [$] | DATE | ORDER TYPE ";
     private int incomeMoney;
     private LocalDate data;
     private String sourceOfIncome;
@@ -54,6 +56,10 @@ public class Income {
 
     public void printIncomeInfo(){
         System.out.printf("\u001B[30m\u001B[43m" + INFO, getSourceOfIncome(), getIncomeMoney(), getData(), getOrderType());
+    }
+
+    public static void printIncomingTop(){
+        System.out.println(INCOME_OUT_PRINT_TOP);
     }
 
 

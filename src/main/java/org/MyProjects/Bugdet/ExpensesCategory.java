@@ -1,9 +1,8 @@
 package org.MyProjects.Bugdet;
 
-import java.util.ArrayList;
-
 public class ExpensesCategory {
-    String[] expenditureCategory = {"Fuel",
+    private static final String[] expenditureCategory = {
+            "Fuel",
             "Clothes",
             "Food",
             "Taxes",
@@ -13,7 +12,13 @@ public class ExpensesCategory {
             "Beauty, health",
             "Other"};
 
-    public String getExpCategory(int index){
+    public static String getExpenditureCategory(int index){
         return expenditureCategory[index];
+    }
+
+    public static void printExpenditureCategoryLikeMenu(){
+        for (int i = 0; i < expenditureCategory.length; i++) {
+            System.out.println("#" + i + " " + expenditureCategory[i]);
+        }
     }
 }
