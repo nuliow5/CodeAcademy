@@ -29,27 +29,27 @@ public class Registra {
 
     public static void simulation(){
         registerList.put(1, new Car(
-                "vw_passat",
+                "vw passat",
                 "AAB123",
-                LocalDate.of(2022, 02, 03),
+                LocalDate.of(2022, 2,3),
                 "Petras"));
 
         registerList.put(2, new Car(
                 "porsche panamera",
                 "ERT987",
-                LocalDate.of(2022, 02, 21),
+                LocalDate.of(2022, 2, 21),
                 "Antanas"));
 
         registerList.put(3, new Car(
                 "kia sportage",
                 "WER785",
-                LocalDate.of(2021, 03, 05),
+                LocalDate.of(2021, 3, 5),
                 "Petras"));
 
         registerList.put(4, new Car(
                 "tesla model 3",
                 "WER785",
-                LocalDate.of(2022, 02, 15),
+                LocalDate.of(2022, 2, 15),
                 "Petras"));
     }
 
