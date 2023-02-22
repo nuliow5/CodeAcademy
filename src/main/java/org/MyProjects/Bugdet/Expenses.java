@@ -66,6 +66,7 @@ public class Expenses {
     public void printExpensesInfo(){
         System.out.printf("\u001B[30m\u001B[43m" + EXPENSES_INFO, getObjId(),
                 getExpCategory(), getExpMoney(), getDate(),getPaymentMethod(), getAdditionalInfo());
+
     }
 
 

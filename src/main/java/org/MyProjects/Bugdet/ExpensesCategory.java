@@ -1,7 +1,7 @@
 package org.MyProjects.Bugdet;
 
 public class ExpensesCategory {
-    private static final String[] expenditureCategory = {
+    static final String[] expenditureCategory = {
             "Fuel",
             "Clothes",
             "Food",
@@ -21,4 +21,6 @@ public class ExpensesCategory {
             System.out.println("#" + i + " " + expenditureCategory[i]);
         }
     }
+
+
 }

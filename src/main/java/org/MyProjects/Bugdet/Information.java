@@ -4,7 +4,7 @@ public class Information {
 
     private final static String BLACK_WHITE = "\u001B[37m\u001B[40m";
     private final static String YELLOW_BLACK = "\u001B[30m\u001B[43m";
-    private final static String INCOME_OUT_PRINT_TOP = "COMPANY | INCOME [$] | DATE | ORDER TYPE ";
+    private final static String INCOME_OUT_PRINT_TOP = "            | ID | COMPANY | INCOME [$] |    DATE     | ORDER TYPE \n";
 
     private final static String MAIN_MENU_INFO = BLACK_WHITE + "MAIN MENU\n" +
             "#1 Fill income\n" +
@@ -48,11 +48,12 @@ public class Information {
     // #3 MENU
     public static void printIncomingTop(){
         printLine();
-        System.out.println(INCOME_OUT_PRINT_TOP);
+        System.out.printf(INCOME_OUT_PRINT_TOP);
+        printLine();
     }
     public static void YellowBlackStyle(int sumAllIncome, int countSpendingMoney, String countBudget ){
         System.out.printf(YELLOW_BLACK + ALL_INCOME_MONEY_INFO, sumAllIncome);
-        System.out.println("All spend money is " + countSpendingMoney + "\n" +
+        System.out.println("All spend money is " + countSpendingMoney + "$\n" +
                         "Budget is: " + countBudget);
 
     }
@@ -67,12 +68,23 @@ public class Information {
     }
 
     public static void expensesTopOutputMenu(){
-        System.out.println("ID | EXPENSES CATEGORY | SPEND MONEY [$] |    DATA    | ORDER TYPE | ADDITIONAL INFORMATION");
+        printLine();
+        System.out.print("\u001B[30m\u001B[43mID | EXPENSES CATEGORY | SPEND MONEY [$] |    DATA    | ORDER TYPE | ADDITIONAL INFORMATION \n");
         printLine();
 
     }
 
     // #4 MENU
+    public static void forMenuEditing(){
+        System.out.println("What list you want edit?\n" +
+                "#1 - Income\n" +
+                "#2 - Expenses");
+    }
+
+    public static void printChoseDelete(){
+        System.out.println("Chose id what you want delete?");
+    }
+
 
 
 

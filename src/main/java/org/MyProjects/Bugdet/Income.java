@@ -2,14 +2,17 @@ package org.MyProjects.Bugdet;
 
 import java.time.LocalDate;
 public class Income {
-    private final static String INFO = "You received the income from | %s,| %s$, " +
-            "| date - %s | order type - %s\n";
+    private final static String INFO = "Income from | %2s | %7s | %8s$  " +
+            "| %11s | %s\n";
 
     private int incomeMoney;
     private LocalDate data;
     private String sourceOfIncome;
     private String orderType; //cash or in Bank Acc
 
+    private static int idIncome = 0;
+
+    private int objId;
     Budget budget;
 
     public Income(int sum, LocalDate data, String sourceOfIncome, String orderType) {
@@ -17,6 +20,12 @@ public class Income {
         this.data = data;
         this.sourceOfIncome = sourceOfIncome;
         this.orderType = orderType;
+        idIncome++;
+        this.objId += idIncome;
+    }
+
+    public int getObjId() {
+        return objId;
     }
 
     public int getIncomeMoney() {
@@ -54,7 +63,13 @@ public class Income {
     }
 
     public void printIncomeInfo(){
-        System.out.printf("\u001B[30m\u001B[43m" + INFO, getSourceOfIncome(), getIncomeMoney(), getData(), getOrderType());
+        System.out.printf("\u001B[30m\u001B[43m" + INFO,
+                getObjId(),
+                getSourceOfIncome(),
+                getIncomeMoney(),
+                getData(),
+                getOrderType());
+
     }
 
 
