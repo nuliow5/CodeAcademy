@@ -1,24 +1,28 @@
 package org.OOO.Extend.ExtendSecondTask;
 
 public class Student extends Person{
-    protected int age;
-    public Student(Date date, String personName, int age) {
+    private String studentId;
+
+    public Student(Date date, String personName, String studentId) {
         super(date, personName);
-        this.age = age;
+        this.studentId = studentId;
     }
 
     public Student(){
-        setPersonName("Jurgis");
-        setAge(15);
-
 
     }
 
-    public int getAge() {
-        return age;
+    public void setStudentId(String studentId) {
+        this.studentId = studentId;
     }
 
-    public void setAge(int age) {
-        this.age = age;
+    public String playingVideoGame(){
+        return studentId + " " + " joined to server...";
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + " " + playingVideoGame();
+
     }
 }

@@ -2,22 +2,27 @@ package org.OOO.Extend.ExtendSecondTask;
 
 public class Main {
     public static void main(String[] args) {
-        Person person = new Person();
-        Student student = new Student();
 
-        Student newStudent = new Student(
-                (new Date(1999, 05, 03)),
-                "Vardas",
-                15);
+        Person personUnic = new Person(new Date(1985, 8, 7), "Mario");
 
-        System.out.println(person.getPersonName());
+        Student newStudent = new Student((new Date(1999, 05, 03)),
+                "Destroyer3000", "qwe321");
 
-        System.out.println(student.getAge() + " " +
-                student.getPersonName());
+        System.out.println(personUnic);
+        System.out.println(newStudent);
 
 
-//        System.out.println(newStudent.getAge() + " " +
-//                newStudent.getPersonName() + " " +
-//                );
+        Person personDefault = new Person();
+        personDefault.setDate(new Date(2000, 3, 5));
+        personDefault.setPersonName("Homer");
+        System.out.println(personDefault);
+
+        Student studentDefault = new Student();
+        studentDefault.setDate(new Date(1995, 6, 7));
+        studentDefault.setPersonName("Marge");
+        studentDefault.setStudentId("asd478521");
+        System.out.println(studentDefault);
+
+
     }
 }

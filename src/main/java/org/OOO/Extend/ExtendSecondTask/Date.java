@@ -38,7 +38,7 @@ public class Date {
 
     }
 
-    public void print() {
-        System.out.println(getYear() + "-" + getMonth() + "-" + getDay());
+    public String printDate() {
+        return (getYear() + "-" + getMonth() + "-" + getDay());
     }
 }
