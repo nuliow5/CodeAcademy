@@ -6,17 +6,17 @@ import java.util.Scanner;
 
 import static org.MyProjects.Bugdet.ExpensesCategory.expenditureCategory;
 import static org.MyProjects.Bugdet.ExpensesCategory.printExpenditureCategoryLikeMenu;
+import static org.MyProjects.Bugdet.Simulaion.InputOutputSimulations.simulateWithRecords;
 import static org.MyProjects.Bugdet.Order.getOrderTypeIndex;
 import static org.MyProjects.Bugdet.Order.printOrderTypes;
 
 
-public class Budget {
-
+public class Budget implements InputOutput {
     private static final String FULL_COST_INFORMATION = "%20s | %-5s | %s\n";
 
-    ArrayList<Income> incomeList = new ArrayList<>();
-    ArrayList<Expenses> expensesList = new ArrayList<>();
-    ArrayList<ExpensObj> expensObjArrayList = new ArrayList<>();
+    protected static ArrayList<Record> records = new ArrayList<>();
+
+    protected ArrayList<ExpensObj> expensObjArrayList = new ArrayList<>();
     private int sumAllIncome;
     Scanner scanner = new Scanner(System.in);
     private boolean start = true;
@@ -32,12 +32,13 @@ public class Budget {
 
     ExpensObj expensObj;
 
-    Budget() {
+    public Budget() {
 
     }
 
     public void startProgram() {
-        simulation();
+//        simulation();
+        simulateWithRecords();
         createExpensesObj();
 
         while (start) {
@@ -60,16 +61,26 @@ public class Budget {
                 month = scanner.nextInt();
                 Information.firstMainQuestDataDay();
                 day = scanner.nextInt();
+                Information.secondMainQuestAdditionalInfo();
+                additionalInfo = scanner.next();
+
 
                 printOrderTypes();
                 mainMenu = scanner.nextInt();
 
                 orderType = getOrderTypeIndex(mainMenu);
 
-                incomeList.add(new Income(incomeMoney,
+                inputRecord(new Income(incomeMoney,
                         LocalDate.of(year, month, day),
                         sourceOfIncome,
-                        orderType));
+                        orderType,
+                        additionalInfo));
+
+//                incomeList.add(new Income(incomeMoney,
+//                        LocalDate.of(year, month, day),
+//                        sourceOfIncome,
+//                        orderType,
+//                        additionalInfo));
 
 
                 // #2
@@ -93,7 +104,7 @@ public class Budget {
                 Information.secondMainQuestAdditionalInfo();
                 additionalInfo = scanner.next();
 
-                expensesList.add(new Expenses(
+                inputRecord(new Expenses(
                         expensesIndex,
                         expensesMoney,
                         LocalDate.of(year, month, day),
@@ -101,99 +112,111 @@ public class Budget {
                         additionalInfo
                 ));
 
+
                 // #3
             } else if (mainMenu == 3) {
-
                 printIncomingFromList();
-
-                printListOfExpenses();
-
-                //all spend
+                printExpensesList();
                 printFullCostInformation();
+
 
                 // #4
             } else if (mainMenu == 4) {
-                Information.forMenuEditing();
-                int deleteMenu = 0;
+                System.out.println("You want: \n" +
+                        "#1 delete line\n" +
+                        "#2 edit line");
                 mainMenu = scanner.nextInt();
 
+                //Delete
                 if (mainMenu == 1) {
-                    printIncomingFromList();
+                    printOnlyIncome();
+                    printExpensesList();
                     Information.printChoseDelete();
 
-                    deleteMenu = scanner.nextInt() - 1;
-                    incomeList.remove(deleteMenu);
+                    int deleteMenu = scanner.nextInt();
+                    records.remove(findArrayIndexById(deleteMenu));
 
+
+                    //edit
                 } else if (mainMenu == 2) {
+                    //code here
 
-                    printListOfExpenses();
-                    Information.printChoseDelete();
-
-                    deleteMenu = scanner.nextInt() - 1;
-                    expensesList.remove(deleteMenu);
-
+                } else {
+                    System.out.println("bad imput");
                 }
+
+
+                //delete
+
+
+//                Information.forMenuEditing();
+//                int deleteMenu = 0;
+//                mainMenu = scanner.nextInt();
+//
+//                if (mainMenu == 1) {
+//                    printIncomingFromList();
+//                    Information.printChoseDelete();
+//
+//                    deleteMenu = scanner.nextInt() - 1;
+//                    getIncomeList().remove(deleteMenu);
+//
+//                } else if (mainMenu == 2) {
+//
+//                    printExpensesList();
+//                    Information.printChoseDelete();
+//
+//                    deleteMenu = scanner.nextInt() - 1;
+//                    getExpensesList().remove(deleteMenu);
+//                }
+
             }
         }
     }
 
-    public void simulation() {
-        expensesList.add(new Expenses(
-                0,
-                85,
-                LocalDate.of(2023, 2, 15),
-                "BANK",
-                "MSI"));
+    @Override
+    public void inputRecord(Record record) {
+        records.add(record);
+    }
 
-        expensesList.add(new Expenses(
-                2,
-                130,
-                LocalDate.of(2023, 2, 13),
-                "BANK",
-                "LIDL"));
+    @Override
+    public ArrayList<Expenses> getExpensesList() {
+        ArrayList<Expenses> expensesList = new ArrayList<>();
 
-        expensesList.add(new Expenses(
-                3,
-                630,
-                LocalDate.of(2023, 2, 10),
-                "BANK",
-                "-"));
+        for (int i = 0; i < records.size(); i++) {
+            if (records.get(i).getRecordType().equals(RecordType.EXPENSES)) {
+                expensesList.add((Expenses) records.get(i));
+            }
+        }
 
-        expensesList.add(new Expenses(
-                7,
-                60,
-                LocalDate.of(2023, 2, 11),
-                "BANK",
-                "-"));
-
-        expensesList.add(new Expenses(
-                2,
-                32,
-                LocalDate.of(2023, 2, 13),
-                "BANK",
-                "Silas"));
-
-        expensesList.add(new Expenses(
-                6,
-                520,
-                LocalDate.of(2023, 2, 23),
-                "BANK",
-                "House credit"));
-
-        incomeList.add(new Income(
-                4200,
-                LocalDate.of(2023, 2, 5),
-                "Netflix",
-                "Bank"));
+        return expensesList;
 
     }
 
+    public void printExpensesList() {
+
+        Information.expensesTopOutputMenu();
+        for (Expenses expenses : getExpensesList()) {
+            expenses.printExpensesInfo();
+        }
+    }
+
+    @Override
+    public ArrayList<Income> getIncomeList() {
+        ArrayList<Income> incomeList = new ArrayList<>();
+        for (int i = 0; i < records.size(); i++) {
+            if (records.get(i).getRecordType().equals(RecordType.INCOME)) {
+                incomeList.add((Income) records.get(i));
+            }
+        }
+
+        return incomeList;
+    }
 
     public int countSpendingMoney() {
         int sumOfSpendingMoney = 0;
 
-        for (int i = 0; i < expensesList.size(); i++) {
-            sumOfSpendingMoney += expensesList.get(i).getExpMoney();
+        for (int i = 0; i < getExpensesList().size(); i++) {
+            sumOfSpendingMoney += getExpensesList().get(i).getMoney();
         }
         return sumOfSpendingMoney;
     }
@@ -210,19 +233,16 @@ public class Budget {
         return budgetValue + "$" + budgetType;
     }
 
-    public void printListOfExpenses() {
-        Information.expensesTopOutputMenu();
-        for (Expenses expenses : expensesList) {
-            expenses.printExpensesInfo();
+    public void printOnlyIncome() {
+        Information.printIncomingTop();
+        for (int i = 0; i < getIncomeList().size(); i++) {
+            getIncomeList().get(i).printIncomeInfo();
+            sumAllIncome += getIncomeList().get(i).getMoney();
         }
     }
 
     public void printIncomingFromList() {
-        Information.printIncomingTop();
-        for (int i = 0; i < incomeList.size(); i++) {
-            incomeList.get(i).printIncomeInfo();
-            sumAllIncome += incomeList.get(i).getIncomeMoney();
-        }
+        printOnlyIncome();
 
         Information.printLine();
         System.out.println();
@@ -234,15 +254,14 @@ public class Budget {
         for (int i = 0; i < expenditureCategory.length; i++) {
             expensObjArrayList.add(new ExpensObj(expenditureCategory[i]));
 
-
         }
     }
 
     public void provideFullCostInformation() {
         for (int i = 0; i < expensObjArrayList.size(); i++) {
-            for (int j = 0; j < expensesList.size(); j++) {
-                if (expensObjArrayList.get(i).getExpType().equals(expensesList.get(j).getExpCategory())) {
-                    expensObjArrayList.get(i).setAllSpendMoney(expensesList.get(j).getExpMoney());
+            for (int j = 0; j < getExpensesList().size(); j++) {
+                if (expensObjArrayList.get(i).getExpType().equals(getExpensesList().get(j).getExpCategory())) {
+                    expensObjArrayList.get(i).setAllSpendMoney(getExpensesList().get(j).getMoney());
                 }
             }
         }
@@ -270,6 +289,15 @@ public class Budget {
             paintSymbol += "⏹";
         }
         return paintSymbol;
+    }
+
+    public int findArrayIndexById(int id){
+        for (int i = 0; i < records.size(); i++) {
+            if (records.get(i).getObjId() == id){
+                return i;
+            }
+        }
+        return -1;
     }
 
 

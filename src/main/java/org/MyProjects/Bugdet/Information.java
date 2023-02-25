@@ -4,13 +4,13 @@ public class Information {
 
     private final static String BLACK_WHITE = "\u001B[37m\u001B[40m";
     private final static String YELLOW_BLACK = "\u001B[30m\u001B[43m";
-    private final static String INCOME_OUT_PRINT_TOP = "            | ID | COMPANY | INCOME [$] |    DATE     | ORDER TYPE \n";
+    private final static String INCOME_OUT_PRINT_TOP = "ID |   TYPE   |      COMPANY      |   INCOME [$]    |    DATE    | ORDER TYPE | ADDITIONAL INFORMATION \n";
 
     private final static String MAIN_MENU_INFO = BLACK_WHITE + "MAIN MENU\n" +
             "#1 Fill income\n" +
             "#2 Fill expenses\n" +
             "#3 Get budget information\n" +
-            "#4 Edit your Income and Expenses lists\n" +
+            "#4 Edit budget\n" +
             "# - press any number for close program";
     private final static String ALL_INCOME_MONEY_INFO = "\u001B[43mAll income money for this month is: %s$\n";
 
@@ -61,7 +61,7 @@ public class Information {
     public static void printLine(){
         System.out.print("\u001B[30m\u001B[43m");
         String line = "-";
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 110; i++) {
             System.out.print(line);
         }
         System.out.println();
@@ -69,7 +69,7 @@ public class Information {
 
     public static void expensesTopOutputMenu(){
         printLine();
-        System.out.print("\u001B[30m\u001B[43mID | EXPENSES CATEGORY | SPEND MONEY [$] |    DATA    | ORDER TYPE | ADDITIONAL INFORMATION \n");
+        System.out.print("\u001B[30m\u001B[43mID |   TYPE   | EXPENSES CATEGORY | SPEND MONEY [$] |    DATE    | ORDER TYPE | ADDITIONAL INFORMATION \n");
         printLine();
 
     }
