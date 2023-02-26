@@ -1,6 +1,6 @@
 package org.MyProjects.Bugdet;
 
-public class ExpensesCategory {
+public final class ExpensesCategory {
     static final String[] expenditureCategory = {
             "Fuel",
             "Clothes",

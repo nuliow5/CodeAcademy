@@ -3,6 +3,9 @@ package org.MyProjects.Bugdet;
 import java.time.LocalDate;
 
 public class Record {
+
+    private final static String INFO = "%2s | %-8s | %-17s | %14s$ " +
+            "| %10s | %-10s | %s \n";
     private int money;
     private LocalDate date;
     private String orderType;
@@ -63,5 +66,33 @@ public class Record {
 
     public RecordType getRecordType() {
         return recordType;
+    }
+
+    public void setMoney(int money) {
+        this.money = money;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
+    public void setOrderType(String orderType) {
+        this.orderType = orderType;
+    }
+
+    public void setAdditionalInfo(String additionalInfo) {
+        this.additionalInfo = additionalInfo;
+    }
+
+    public void printRecord(String getValue){
+        System.out.printf("\u001B[30m\u001B[43m" + INFO,
+                getObjId(),
+                getRecordType(),
+                getValue,
+                getMoney(),
+                getDate(),
+                getOrderType(),
+                getAdditionalInfo());
+
     }
 }

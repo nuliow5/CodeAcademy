@@ -4,8 +4,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import static org.MyProjects.Bugdet.ExpensesCategory.expenditureCategory;
-import static org.MyProjects.Bugdet.ExpensesCategory.printExpenditureCategoryLikeMenu;
+import static org.MyProjects.Bugdet.ExpensesCategory.*;
 import static org.MyProjects.Bugdet.Simulaion.InputOutputSimulations.simulateWithRecords;
 import static org.MyProjects.Bugdet.Order.getOrderTypeIndex;
 import static org.MyProjects.Bugdet.Order.printOrderTypes;
@@ -37,7 +36,6 @@ public class Budget implements InputOutput {
     }
 
     public void startProgram() {
-//        simulation();
         simulateWithRecords();
         createExpensesObj();
 
@@ -75,12 +73,6 @@ public class Budget implements InputOutput {
                         sourceOfIncome,
                         orderType,
                         additionalInfo));
-
-//                incomeList.add(new Income(incomeMoney,
-//                        LocalDate.of(year, month, day),
-//                        sourceOfIncome,
-//                        orderType,
-//                        additionalInfo));
 
 
                 // #2
@@ -122,9 +114,7 @@ public class Budget implements InputOutput {
 
                 // #4
             } else if (mainMenu == 4) {
-                System.out.println("You want: \n" +
-                        "#1 delete line\n" +
-                        "#2 edit line");
+                Information.forMenu();
                 mainMenu = scanner.nextInt();
 
                 //Delete
@@ -139,35 +129,21 @@ public class Budget implements InputOutput {
 
                     //edit
                 } else if (mainMenu == 2) {
-                    //code here
+                    printOnlyIncome();
+                    printExpensesList();
+                    Information.choseLineForEdit();
+                    int editMenu = scanner.nextInt();
+                    int index = findArrayIndexById(editMenu);
+                    if (index >= 0){
+                        updateRecord(records.get(index));
+                    } else {
+                        Information.badInput();
+                    }
 
                 } else {
-                    System.out.println("bad imput");
+                    Information.badInput();
                 }
 
-
-                //delete
-
-
-//                Information.forMenuEditing();
-//                int deleteMenu = 0;
-//                mainMenu = scanner.nextInt();
-//
-//                if (mainMenu == 1) {
-//                    printIncomingFromList();
-//                    Information.printChoseDelete();
-//
-//                    deleteMenu = scanner.nextInt() - 1;
-//                    getIncomeList().remove(deleteMenu);
-//
-//                } else if (mainMenu == 2) {
-//
-//                    printExpensesList();
-//                    Information.printChoseDelete();
-//
-//                    deleteMenu = scanner.nextInt() - 1;
-//                    getExpensesList().remove(deleteMenu);
-//                }
 
             }
         }
@@ -197,6 +173,7 @@ public class Budget implements InputOutput {
         Information.expensesTopOutputMenu();
         for (Expenses expenses : getExpensesList()) {
             expenses.printExpensesInfo();
+
         }
     }
 
@@ -271,7 +248,6 @@ public class Budget implements InputOutput {
         provideFullCostInformation();
         Information.printLine();
         for (int i = 0; i < expensObjArrayList.size(); i++) {
-
             int indicator = (expensObjArrayList.get(i).getAllSpendMoney() * 100) / countSpendingMoney();
 
             System.out.printf(FULL_COST_INFORMATION,
@@ -283,22 +259,96 @@ public class Budget implements InputOutput {
     }
 
     public String printIndicator(int indicator) {
-        //paint *
-        String paintSymbol = "";
+        //paint
+        StringBuilder paintSymbol = new StringBuilder();
         for (int j = 0; j < indicator; j++) {
-            paintSymbol += "⏹";
+            paintSymbol.append("⏹");
         }
-        return paintSymbol;
+        return paintSymbol.toString();
     }
 
-    public int findArrayIndexById(int id){
+    public int findArrayIndexById(int id) {
         for (int i = 0; i < records.size(); i++) {
-            if (records.get(i).getObjId() == id){
+            if (records.get(i).getObjId() == id) {
                 return i;
             }
         }
         return -1;
     }
+
+    public void updateRecord(Record record) {
+        if (record.getRecordType().equals(RecordType.EXPENSES)) {
+            ((Expenses) record).printExpensesInfo();
+
+            System.out.println("\u001B[37m\u001B[40mDo you want change " +
+                    "EXPENSES category? " + ((Expenses) record).getExpCategory() + "\n" +
+                    "#1 YES \n" +
+                    "#2 NO");
+            int yesNo = scanner.nextInt();
+            if (yesNo == 1) {
+                Information.secondMainQuestExpenses();
+                printExpenditureCategoryLikeMenu();
+                expensesIndex = scanner.nextInt();
+                ((Expenses) record).setExpCategory(getExpenditureCategory(expensesIndex));
+            }
+
+        } else {
+            ((Income) record).printIncomeInfo();
+            System.out.println("Do you want change " +
+                    "source of income [Company name]? " + ((Income) record).getSourceOfIncome() + "\n" +
+                    "#1 YES \n" +
+                    "#2 NO");
+            int yesNo = scanner.nextInt();
+            if (yesNo == 1) {
+                Information.firstMainQuestCompanyName();
+                String sourceOfIncome = scanner.next();
+                ((Income) record).setSourceOfIncome(sourceOfIncome);
+            }
+        }
+
+        String covertInformation = "" + record.getMoney();
+        Information.changeQuestion("money [$]", covertInformation);
+        int yesNo = scanner.nextInt();
+        if (yesNo == 1) {
+            Information.infoInputChanges();
+            int money = scanner.nextInt();
+            record.setMoney(money);
+        }
+
+        covertInformation = "" + record.getDate();
+        Information.changeQuestion("DATE", covertInformation);
+        yesNo = scanner.nextInt();
+        if (yesNo == 1) {
+            Information.firstMainQuestDataYear();
+            year = scanner.nextInt();
+            Information.firstMainQuestDataMonth();
+            month = scanner.nextInt();
+            Information.firstMainQuestDataDay();
+            day = scanner.nextInt();
+            record.setDate(LocalDate.of(year, month, day));
+        }
+
+        covertInformation = "" + record.getOrderType();
+        Information.changeQuestion("ORDER TYPE", covertInformation);
+        yesNo = scanner.nextInt();
+        if (yesNo == 1) {
+            printOrderTypes();
+            int orderType = scanner.nextInt();
+            record.setOrderType(getOrderTypeIndex(orderType));
+        }
+
+        covertInformation = "" + record.getAdditionalInfo();
+        Information.changeQuestion("ADDITIONAL INFORMATION", covertInformation);
+        yesNo = scanner.nextInt();
+        if (yesNo == 1) {
+            Information.infoInputChanges();
+            additionalInfo = scanner.next();
+            record.setAdditionalInfo(additionalInfo);
+        }
+
+    }
+
+
 
 
 }

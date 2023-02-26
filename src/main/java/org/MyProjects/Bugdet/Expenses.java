@@ -35,4 +35,12 @@ public class Expenses extends Record {
                 "} " + super.toString();
     }
 
+    public void setExpCategory(String expCategory) {
+        this.expCategory = expCategory;
+    }
+
+    @Override
+    public void printRecord(String getValue) {
+        super.printRecord(getValue);
+    }
 }

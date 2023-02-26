@@ -1,7 +1,7 @@
 package org.MyProjects.Bugdet;
 
 public class Information {
-
+    private final static String RED = "\u001B[31m";
     private final static String BLACK_WHITE = "\u001B[37m\u001B[40m";
     private final static String YELLOW_BLACK = "\u001B[30m\u001B[43m";
     private final static String INCOME_OUT_PRINT_TOP = "ID |   TYPE   |      COMPANY      |   INCOME [$]    |    DATE    | ORDER TYPE | ADDITIONAL INFORMATION \n";
@@ -82,7 +82,34 @@ public class Information {
     }
 
     public static void printChoseDelete(){
-        System.out.println("Chose id what you want delete?");
+        System.out.println(BLACK_WHITE + "Chose id what you want delete?");
+    }
+
+    //edit
+
+    public static void changeQuestion(String columnInfo, String convertInformation){
+        System.out.println("Do you want change " +
+                columnInfo + "? [" + convertInformation + "]\n" +
+                "#1 YES \n" +
+                "#2 NO");
+    }
+
+    public static void infoInputChanges(){
+        System.out.println("Input changes");
+    }
+
+    public static void choseLineForEdit(){
+        System.out.println(BLACK_WHITE + "Chose id what you want edit ");
+    }
+
+    public static void badInput(){
+        System.out.println(RED + "Bad input");
+    }
+
+    public static void forMenu(){
+        System.out.println("You want: \n" +
+                "#1 delete line\n" +
+                "#2 edit line");
     }
 
 

@@ -14,7 +14,7 @@ public abstract class InputOutputSimulations extends Budget{
                 4200,
                 LocalDate.of(2023, 2, 5),
                 "Netflix",
-                "Bank", "- "));
+                "Bank", "Full time "));
 
 
         records.add(new Expenses(

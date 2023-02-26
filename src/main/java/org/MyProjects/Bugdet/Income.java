@@ -3,7 +3,7 @@ package org.MyProjects.Bugdet;
 import java.time.LocalDate;
 public class Income extends Record {
     private final static String INFO = "%2s | %-8s | %-17s | %14s$ " +
-            "| %10s | %s\n";
+            "| %10s | %-10s | %s \n";
     private String sourceOfIncome;
 
     public Income(int money, LocalDate date, String sourceOfIncome, String orderType, String additionalInfo) {
@@ -39,4 +39,8 @@ public class Income extends Record {
                 "} " + super.toString();
     }
 
+    @Override
+    public void printRecord(String getValue) {
+        super.printRecord(getSourceOfIncome());
+    }
 }
