@@ -16,15 +16,15 @@ public class Pistol extends Gun {
         return "Implement Pistol -> ";
     }
 
-    @Override
-    public String toString() {
-        return getInformation() + "{" +
-                "name='" + name +
-                "', caliber=" + getCaliber() +
-                ", gunType=" + getGunType() +
-                ", ammoCount=" + getAmmoCount() +
-                "}";
-    }
+//    @Override
+//    public String toString() {
+//        return getInformation() + "{" +
+//                "name='" + name +
+//                "', caliber=" + getCaliber() +
+//                ", gunType=" + getGunType() +
+//                ", ammoCount=" + getAmmoCount() +
+//                "}";
+//    }
 
     @Override
     public double getIndex() {

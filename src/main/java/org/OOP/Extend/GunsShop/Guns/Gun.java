@@ -1,6 +1,9 @@
 package org.OOP.Extend.GunsShop.Guns;
 
-public abstract class Gun implements HasPrice{
+import java.math.BigDecimal;
+import java.util.Comparator;
+
+public abstract class Gun implements HasPrice {
     private float caliber;
     private GunType gunType;
     private int ammoCount;
@@ -42,6 +45,11 @@ public abstract class Gun implements HasPrice{
     public abstract String getInformation();
 
     public abstract double getIndex();
+
+//    @Override
+//    public int compareTo(Gun gun) {
+//        return Double.compare(this.getCost(), gun.getCost());
+//    }
 
 
 

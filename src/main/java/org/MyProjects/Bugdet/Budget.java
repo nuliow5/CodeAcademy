@@ -2,6 +2,7 @@ package org.MyProjects.Bugdet;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 import static org.MyProjects.Bugdet.ExpensesCategory.*;
@@ -14,6 +15,10 @@ public class Budget implements InputOutput {
     private static final String FULL_COST_INFORMATION = "%20s | %-5s | %s\n";
 
     protected static ArrayList<Record> records = new ArrayList<>();
+
+    protected static HashMap<Integer, Record> recordHashMap = new HashMap<>();
+
+
 
     protected ArrayList<ExpensObj> expensObjArrayList = new ArrayList<>();
     private int sumAllIncome;
