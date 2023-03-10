@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact name="CodeAcademy:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/CodeAcademy_jar</output-path>
+    <root id="root">
+      <element id="archive" name="CodeAcademy.jar">
+        <element id="directory" name="META-INF">
+          <element id="file-copy" path="$PROJECT_DIR$/src/main/java/org/Library/Calc/META-INF/MANIFEST.MF" />
+        </element>
+        <element id="module-output" name="CodeAcademy" />
+      </element>
+      <element id="library" level="project" name="Maven: junit:junit:3.8.1" />
+    </root>
+  </artifact>
+</component>

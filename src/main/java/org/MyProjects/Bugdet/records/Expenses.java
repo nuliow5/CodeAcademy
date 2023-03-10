@@ -1,8 +1,8 @@
-package org.MyProjects.Bugdet;
+package org.MyProjects.Bugdet.records;
 
 import java.time.LocalDate;
 
-import static org.MyProjects.Bugdet.ExpensesCategory.getExpenditureCategory;
+import static org.MyProjects.Bugdet.records.ExpensesCategory.getExpenditureCategory;
 
 public class Expenses extends Record {
     private final static String EXPENSES_INFO = "%2s | %8s | %-18s| %14s$ " +
@@ -29,10 +29,9 @@ public class Expenses extends Record {
 
     @Override
     public String toString() {
-        return "Expenses{" +
-                "Record type " + recordType +
-                ", expCategory='" + expCategory + '\'' +
-                "} " + super.toString();
+        return  "\"" + recordType + "\"" +
+                ",\"" + expCategory + "\"" +
+                super.toString();
     }
 
     public void setExpCategory(String expCategory) {

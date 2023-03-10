@@ -1,8 +1,8 @@
 package org.MyProjects.Bugdet.Simulaion;
 
-import org.MyProjects.Bugdet.Budget;
-import org.MyProjects.Bugdet.Expenses;
-import org.MyProjects.Bugdet.Income;
+import org.MyProjects.Bugdet.records.Budget;
+import org.MyProjects.Bugdet.records.Expenses;
+import org.MyProjects.Bugdet.records.Income;
 
 import java.time.LocalDate;
 
@@ -13,7 +13,7 @@ public abstract class InputOutputSimulations extends Budget {
                 4200,
                 LocalDate.of(2023, 2, 5),
                 "Netflix",
-                "Bank", "Full time "));
+                "Bank", "Full time"));
 
         recordHashMap.put(Expenses.getId(), new Expenses(
                 0,

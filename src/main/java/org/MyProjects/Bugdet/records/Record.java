@@ -1,4 +1,6 @@
-package org.MyProjects.Bugdet;
+package org.MyProjects.Bugdet.records;
+
+import org.MyProjects.Bugdet.workWithFiles.BudgetDataFile;
 
 import java.time.LocalDate;
 
@@ -10,12 +12,10 @@ public class Record {
     private LocalDate date;
     private String orderType;
     private String additionalInfo;
-
     protected RecordType recordType;
 
-    private static int id = 0;
+    private static int id = new BudgetDataFile().readIndexFromFile();
     private int objId;
-
 
     public Record(int money, LocalDate date, String orderType, String additionalInfo) {
         this.money = money;
@@ -55,13 +55,16 @@ public class Record {
 
     @Override
     public String toString() {
-        return "Record{" +
-                "objId=" + objId +
-                ", money=" + money +
-                ", date=" + date +
-                ", orderType='" + orderType + '\'' +
-                ", additionalInfo='" + additionalInfo + '\'' +
-                '}';
+        return ",\"" + objId + "\"" +
+               ",\"" + money + "\"" +
+               ",\"" + date + "\"" +
+               ",\"" + orderType + "\"" +
+               ",\"" + additionalInfo + "\"";
+
+    }
+
+    public String returnObjId(){
+        return "" + objId;
     }
 
     public RecordType getRecordType() {
@@ -95,4 +98,6 @@ public class Record {
                 getAdditionalInfo());
 
     }
+
+
 }

@@ -1,4 +1,4 @@
-package org.MyProjects.Bugdet;
+package org.MyProjects.Bugdet.records;
 
 import java.time.LocalDate;
 public class Income extends Record {
@@ -33,10 +33,9 @@ public class Income extends Record {
     }
     @Override
     public String toString() {
-        return "Income{" +
-                "Record type " + recordType +
-                ", sourceOfIncome='" + sourceOfIncome + '\'' +
-                "} " + super.toString();
+        return "\"" + recordType + "\"" +
+                ",\"" + sourceOfIncome +  "\"" +
+                super.toString();
     }
 
     @Override

@@ -1,4 +1,4 @@
-package org.MyProjects.Bugdet;
+package org.MyProjects.Bugdet.records;
 
 import java.util.ArrayList;
 

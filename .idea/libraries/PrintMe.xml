@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="PrintMe">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/../PrintMe/out/artifacts/PrintMe_jar/PrintMe.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

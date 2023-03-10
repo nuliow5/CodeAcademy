@@ -1,4 +1,4 @@
-package org.MyProjects.Bugdet;
+package org.MyProjects.Bugdet.records;
 
 public class ExpensObj {
     private String expType;
