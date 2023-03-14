@@ -90,8 +90,7 @@ public class Information {
         System.out.println("All spend money is " + printMoneyWithDoubleFormat(countSpendingMoney) + "$\n" +
                 "╔═══════════════════════════════════╗\n" +
                 "  Budget is: " + countBudget + "\n" +
-                "╚═══════════════════════════════════╝\n" +
-                "\n");
+                "╚═══════════════════════════════════╝\n");
 
     }
 
