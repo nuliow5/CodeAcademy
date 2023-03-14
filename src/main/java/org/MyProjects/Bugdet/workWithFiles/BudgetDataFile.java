@@ -6,7 +6,11 @@ import org.MyProjects.Bugdet.records.Record;
 import java.io.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.List;
 
 public class BudgetDataFile {
     private static final String RANDOM_FILE_LOCATION = "src\\main\\java\\org\\MyProjects\\Bugdet\\workWithFiles\\files\\";
@@ -15,7 +19,7 @@ public class BudgetDataFile {
     private static final String LAST_INDEX = "src\\main\\java\\org\\MyProjects\\Bugdet\\workWithFiles\\files\\lastIndex.txt";
 
 
-    public void saveToFile(ArrayList<Record> records){
+    public void saveToFile(List<Record> records){
 
         try (BufferedWriter bfWriter = new BufferedWriter(new FileWriter(BUDGET_FILE_PATH))) {
 
@@ -38,13 +42,14 @@ public class BudgetDataFile {
                 System.out.println(Information.BLACK_WHITE + line);
             }
             System.out.println();
+            bfReader.close();
         } catch (IOException e) {
             new Error("Error404 " + e.getMessage());
         }
     }
 
 
-    public void saveLastIndexToFile(ArrayList<Record> records){
+    public void saveLastIndexToFile(List<Record> records){
         try (BufferedWriter bfWriter = new BufferedWriter(new FileWriter(LAST_INDEX))) {
             bfWriter.write(records.get(records.size()-1).returnObjId());
             System.out.println(Information.BLACK_WHITE + "Last index from file = " + records.get(records.size()-1).returnObjId());
@@ -62,8 +67,10 @@ public class BudgetDataFile {
             while ((line = bfReader.readLine()) != null){
 //                System.out.println(Information.BLACK_WHITE + "Last index from file = " +  line);
                 return Integer.parseInt(line);
+
             }
             System.out.println();
+            bfReader.close();
         } catch (IOException e) {
             new Error("Error404 " + e.getMessage());
         }
@@ -78,13 +85,13 @@ public class BudgetDataFile {
         return randomFilePath;
     }
 
-    public void continueFillFile(ArrayList<Record> records) {
+    public void continueFillFile(List<Record> records) {
         try {
 
             FileWriter fw = new FileWriter(new File(BUDGET_FILE_PATH), true);
             PrintWriter printWriter = new PrintWriter(new BufferedWriter(fw));
 
-            printWriter.println("- " + LocalDate.now() + " " + LocalTime.now());
+            printWriter.println("- " + LocalDate.now() + " " + LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss")));
 
             for (int i = 0; i < records.size(); i++) {
                 printWriter.println(records.get(i));

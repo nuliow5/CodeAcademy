@@ -1,5 +1,7 @@
 package org.MyProjects.Bugdet.information;
 
+import static org.MyProjects.Bugdet.records.Record.printMoneyWithDoubleFormat;
+
 public class Information {
     private static final String RED = "\u001B[31m";
     public static final String BLACK_WHITE = "\u001B[37m\u001B[40m";
@@ -13,10 +15,19 @@ public class Information {
             "#1 Fill income\n" +
             "#2 Fill expenses\n" +
             "#3 Get budget information\n" +
-            "#4 Edit budget\n" +
-            "#5 Save to file\n" +
-            "#888 - for close program";
+            "#4 Sort\n" +
+            "#5 [Edit|Delete] budget\n" +
+            "#6 File [Save|Read]\n" +
+            YELLOW + "#0 - for close program";
     private final static String ALL_INCOME_MONEY_INFO = "\u001B[43mAll income money for this month is: %s$\n";
+
+    private static final String SORT_MENU_INFO = BLACK_WHITE +
+            "#1 sort by ID\n" +
+            "#2 sort by MONEY [$] \n" +
+            "#3 sort by DATE \n" +
+            "#4 sort by ORDER TYPE\n" +
+            "#5 sort by ADDITIONAL INFORMATION\n" +
+            YELLOW + "#0 exit from sort menu";
 
     private static final String WORK_WITH_FILES_MENU = BLACK_WHITE +
             "#1 Save Ass.. data to .CSV file\n" +
@@ -27,6 +38,10 @@ public class Information {
 
     public static void MAIN_MENU_INFO() {
         System.out.println(MAIN_MENU_INFO);
+    }
+
+    public static void sortMenu(){
+        System.out.println(SORT_MENU_INFO);
     }
 
     // #1 MENU
@@ -70,10 +85,13 @@ public class Information {
         printLine();
     }
 
-    public static void YellowBlackStyle(int sumAllIncome, int countSpendingMoney, String countBudget) {
-        System.out.printf(YELLOW_BLACK + ALL_INCOME_MONEY_INFO, sumAllIncome);
-        System.out.println("All spend money is " + countSpendingMoney + "$\n" +
-                "Budget is: " + countBudget);
+    public static void YellowBlackStyle(double sumAllIncome, double countSpendingMoney, String countBudget) {
+        System.out.printf(YELLOW_BLACK + ALL_INCOME_MONEY_INFO, printMoneyWithDoubleFormat(sumAllIncome));
+        System.out.println("All spend money is " + printMoneyWithDoubleFormat(countSpendingMoney) + "$\n" +
+                "╔═══════════════════════════════════╗\n" +
+                "  Budget is: " + countBudget + "\n" +
+                "╚═══════════════════════════════════╝\n" +
+                "\n");
 
     }
 

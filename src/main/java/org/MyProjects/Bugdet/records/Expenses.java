@@ -9,7 +9,7 @@ public class Expenses extends Record {
             "| %s | %-10s | %s \n";
     private String expCategory;
 
-    public Expenses(int expenditureCategory, int money, LocalDate date, String orderType,
+    public Expenses(int expenditureCategory, double money, LocalDate date, String orderType,
                     String additionalInfo) {
         super(money, date, orderType, additionalInfo);
         this.expCategory = getExpenditureCategory(expenditureCategory);
@@ -22,8 +22,14 @@ public class Expenses extends Record {
 
 
     public void printExpensesInfo(){
-        System.out.printf("\u001B[30m\u001B[43m" + EXPENSES_INFO, getObjId(), getRecordType(),
-                getExpCategory(), getMoney(), getDate(),getOrderType(), getAdditionalInfo());
+        System.out.printf("\u001B[30m\u001B[43m" + EXPENSES_INFO,
+                getObjId(),
+                getRecordType(),
+                getExpCategory(),
+                printMoneyWithDoubleFormat(getMoney()),
+                getDate(),
+                getOrderType(),
+                getAdditionalInfo());
 
     }
 
@@ -41,5 +47,10 @@ public class Expenses extends Record {
     @Override
     public void printRecord(String getValue) {
         super.printRecord(getValue);
+    }
+
+    @Override
+    public String testPrint() {
+        return super.testPrint();
     }
 }

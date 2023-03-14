@@ -5,10 +5,10 @@ import org.MyProjects.Bugdet.workWithFiles.BudgetDataFile;
 import java.time.LocalDate;
 
 public class Record {
-
+    private static final String DOUBLE_FORMAT = "%.2f";
     private final static String INFO = "%2s | %-8s | %-17s | %14s$ " +
             "| %10s | %-10s | %s \n";
-    private int money;
+    private double money;
     private LocalDate date;
     private String orderType;
     private String additionalInfo;
@@ -17,7 +17,7 @@ public class Record {
     private static int id = new BudgetDataFile().readIndexFromFile();
     private int objId;
 
-    public Record(int money, LocalDate date, String orderType, String additionalInfo) {
+    public Record(double money, LocalDate date, String orderType, String additionalInfo) {
         this.money = money;
         this.date = date;
         this.orderType = orderType;
@@ -28,7 +28,7 @@ public class Record {
 
     }
 
-    public int getMoney() {
+    public double getMoney() {
         return money;
     }
 
@@ -56,10 +56,19 @@ public class Record {
     @Override
     public String toString() {
         return ",\"" + objId + "\"" +
-               ",\"" + money + "\"" +
+               ",\"" + printMoneyWithDoubleFormat(money) + "\"" +
                ",\"" + date + "\"" +
                ",\"" + orderType + "\"" +
                ",\"" + additionalInfo + "\"";
+
+    }
+
+    public String testPrint() {
+        return ",\"" + objId + "\"" +
+                ",\"" + printMoneyWithDoubleFormat(money) + "\"" +
+                ",\"" + date + "\"" +
+                ",\"" + orderType + "\"" +
+                ",\"" + additionalInfo + "\"";
 
     }
 
@@ -71,7 +80,7 @@ public class Record {
         return recordType;
     }
 
-    public void setMoney(int money) {
+    public void setMoney(double money) {
         this.money = money;
     }
 
@@ -97,6 +106,10 @@ public class Record {
                 getOrderType(),
                 getAdditionalInfo());
 
+    }
+
+    public static String printMoneyWithDoubleFormat(double money){
+        return String.format(DOUBLE_FORMAT, money);
     }
 
 

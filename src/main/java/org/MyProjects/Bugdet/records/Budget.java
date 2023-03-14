@@ -1,23 +1,24 @@
 package org.MyProjects.Bugdet.records;
 
 import org.MyProjects.Bugdet.information.Information;
+import org.MyProjects.Bugdet.sort.*;
 import org.MyProjects.Bugdet.workWithFiles.BudgetDataFile;
 
 import java.time.DateTimeException;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Scanner;
+import java.util.*;
 
 import static org.MyProjects.Bugdet.records.ExpensesCategory.*;
 import static org.MyProjects.Bugdet.Simulaion.InputOutputSimulations.simulateWithRecords;
 import static org.MyProjects.Bugdet.records.Order.getOrderTypeIndex;
 import static org.MyProjects.Bugdet.records.Order.printOrderTypes;
+import static org.MyProjects.Bugdet.records.Record.printMoneyWithDoubleFormat;
 
 
 public class Budget implements InputOutput {
-    private static final String FULL_COST_INFORMATION = "%20s | %-5s | %s\n";
-    protected static ArrayList<Record> records = new ArrayList<>();
+    private static final String FULL_COST_INFORMATION = "%20s | %-10s | %s\n";
+
+    protected static List<Record> records = new ArrayList<>();
     protected static HashMap<Integer, Record> recordHashMap = new HashMap<>();
 
     protected ArrayList<ExpensObj> expensObjArrayList = new ArrayList<>();
@@ -25,17 +26,10 @@ public class Budget implements InputOutput {
     Scanner scanner = new Scanner(System.in);
 
     BudgetDataFile budgetDataFile = new BudgetDataFile();
-
-    //data for date
-//    private int year, month, day;
     private String orderType;
-
-    //Expenses menu values
     private int expensesIndex;
-//    private int expensesMoney;
     private String additionalInfo;
 
-    ExpensObj expensObj;
 
     public Budget() {
 
@@ -68,21 +62,24 @@ public class Budget implements InputOutput {
                 printFullCostInformation();
 
 
+
                 // #4
             } else if (mainMenu == 4) {
+                choseSortType();
+
+            } else if (mainMenu == 5) {
                 editBudget();
 
-            } else if (mainMenu == 5){
+            } else if (mainMenu == 6) {
                 workWithFile();
 
 
             } else if (mainMenu == -1) {
                 continue;
-            } else if (mainMenu == 888) {
+            } else if (mainMenu == 0) {
                 Information.printExitProgram();
                 start = false;
             }
-
 
         }
 
@@ -93,17 +90,17 @@ public class Budget implements InputOutput {
             while (true) {
                 Information.workWithFileMenu();
                 int mainMenu = Integer.parseInt(scanner.next());
-                if (mainMenu == 1){
+                if (mainMenu == 1) {
                     budgetDataFile.saveToFile(records);
                     budgetDataFile.saveLastIndexToFile(records);
 
                     break;
-                } else if (mainMenu == 2){
+                } else if (mainMenu == 2) {
                     budgetDataFile.continueFillFile(records);
                     budgetDataFile.saveLastIndexToFile(records);
 
                     break;
-                } else if (mainMenu == 3){
+                } else if (mainMenu == 3) {
                     budgetDataFile.readFile();
                     budgetDataFile.readIndexFromFile();
                     break;
@@ -113,7 +110,7 @@ public class Budget implements InputOutput {
                 }
 
             }
-        } catch (NumberFormatException e){
+        } catch (NumberFormatException e) {
             Information.badInput(String.valueOf(e));
 
         }
@@ -161,8 +158,8 @@ public class Budget implements InputOutput {
         return incomeList;
     }
 
-    public int countSpendingMoney() {
-        int sumOfSpendingMoney = 0;
+    public double countSpendingMoney() {
+        double sumOfSpendingMoney = 0;
 
         for (int i = 0; i < getExpensesList().size(); i++) {
             sumOfSpendingMoney += getExpensesList().get(i).getMoney();
@@ -171,7 +168,7 @@ public class Budget implements InputOutput {
     }
 
     public String countBudget() {
-        int budgetValue = sumAllIncome - countSpendingMoney();
+        double budgetValue = sumAllIncome - countSpendingMoney();
         String budgetType;
         if (budgetValue < 0) {
             budgetType = " (negative) ";
@@ -179,7 +176,7 @@ public class Budget implements InputOutput {
             budgetType = " (positive) ";
         }
 
-        return budgetValue + "$" + budgetType;
+        return printMoneyWithDoubleFormat(budgetValue) + "$" + budgetType;
     }
 
     public void printOnlyIncome() {
@@ -204,13 +201,21 @@ public class Budget implements InputOutput {
             expensObjArrayList.add(new ExpensObj(expenditureCategory[i]));
 
         }
+
     }
 
     public void provideFullCostInformation() {
+        //clear expensObjArrayList
+        for (int i = 0; i < expensObjArrayList.size(); i++) {
+            expensObjArrayList.get(i).setAllSpendMoney(0);
+        }
+
+        //fill
         for (int i = 0; i < expensObjArrayList.size(); i++) {
             for (int j = 0; j < getExpensesList().size(); j++) {
                 if (expensObjArrayList.get(i).getExpType().equals(getExpensesList().get(j).getExpCategory())) {
-                    expensObjArrayList.get(i).setAllSpendMoney(getExpensesList().get(j).getMoney());
+                    double existingMoney = expensObjArrayList.get(i).getAllSpendMoney();
+                    expensObjArrayList.get(i).setAllSpendMoney(getExpensesList().get(j).getMoney() + existingMoney);
                 }
             }
         }
@@ -220,7 +225,7 @@ public class Budget implements InputOutput {
         provideFullCostInformation();
         Information.printLine();
         for (int i = 0; i < expensObjArrayList.size(); i++) {
-            int indicator = (expensObjArrayList.get(i).getAllSpendMoney() * 100) / countSpendingMoney();
+            double indicator = (expensObjArrayList.get(i).getAllSpendMoney() * 50) / countSpendingMoney();
 
             System.out.printf(FULL_COST_INFORMATION,
                     expensObjArrayList.get(i).getExpType(),
@@ -230,7 +235,7 @@ public class Budget implements InputOutput {
 
     }
 
-    public String printIndicator(int indicator) {
+    public String printIndicator(double indicator) {
         //paint
         StringBuilder paintSymbol = new StringBuilder();
         for (int j = 0; j < indicator; j++) {
@@ -299,7 +304,7 @@ public class Budget implements InputOutput {
                 if (yesNo > 0 && yesNo < 3) {
                     if (yesNo == 1) {
                         Information.infoInputChanges();
-                        int money = Integer.parseInt(scanner.next());
+                        double money = Double.parseDouble(scanner.next());
                         record.setMoney(money);
                         break;
                     }
@@ -334,7 +339,7 @@ public class Budget implements InputOutput {
                         break;
                     }
                     break;
-                }else {
+                } else {
                     Information.badInput();
                 }
             }
@@ -368,17 +373,17 @@ public class Budget implements InputOutput {
         try {
             int mainMenu = Integer.parseInt(sc);
 
-            if ((mainMenu > 0 && mainMenu < 6) || (mainMenu == 888)){
+            if ((mainMenu >= 0 && mainMenu < 7)) {
                 return mainMenu;
             } else {
                 Information.badInput();
-                return -1;
-            }
-        } catch (NumberFormatException e) {
-            Information.badInput(String.valueOf(e));
-            return -1;
-        }
 
+            }
+        } catch (NumberFormatException | NoSuchElementException e) {
+            Information.badInput(String.valueOf(e));
+
+        }
+        return -1;
 
     }
 
@@ -402,7 +407,7 @@ public class Budget implements InputOutput {
             String sourceOfIncome = scanner.next();
 
             Information.firstMainQuestIncomeMoney();
-            int incomeMoney = Integer.parseInt(scanner.next());
+            double incomeMoney = Double.parseDouble(scanner.next());
 
             LocalDate localDate = setLocalDate();
 
@@ -485,7 +490,7 @@ public class Budget implements InputOutput {
             expensesIndex = fillExpensesExpCategory();
 
             Information.secondMainQuestExpensesMoney();
-            int expensesMoney = Integer.parseInt(scanner.next());
+            double expensesMoney = Double.parseDouble(scanner.next());
 
             LocalDate localDate = setLocalDate();
 
@@ -603,7 +608,7 @@ public class Budget implements InputOutput {
         }
     }
 
-    private String fillOrderType(){
+    private String fillOrderType() {
         while (true) {
             printOrderTypes();
             int orderTypeChose = Integer.parseInt(scanner.next());
@@ -614,6 +619,43 @@ public class Budget implements InputOutput {
                 Information.badInput("try again!");
             }
         }
+    }
+
+    private void choseSortType() {
+        try {
+            while (true) {
+                Information.sortMenu();
+                int sortMenu = Integer.parseInt(scanner.next());
+                if (sortMenu == 0) {
+                    break;
+                } else if (sortMenu == 1) {
+                    Collections.sort(records, new SortById());
+                    printExpensesList();
+                } else if (sortMenu == 2) {
+                    Collections.sort(records, new SortByMoney());
+                    printExpensesList();
+
+                } else if (sortMenu == 3) {
+                    Collections.sort(records, new SortByDate());
+                    printExpensesList();
+
+                } else if (sortMenu == 4) {
+                    Collections.sort(records, new SortByOrderType());
+                    printExpensesList();
+                } else if (sortMenu == 5) {
+                    Collections.sort(records, new SortByAdditionalInformation());
+                    printExpensesList();
+
+                } else {
+                    Information.badInput();
+                }
+            }
+
+        } catch (NumberFormatException e) {
+            Information.badInput(String.valueOf(e));
+        }
+
+
     }
 
 

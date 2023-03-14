@@ -4,7 +4,7 @@ public class Weights extends Assessment {
 
     public Weights(int firstGrade, int secondGrade, int thirdGrade) {
         super(firstGrade, secondGrade, thirdGrade);
-    }
+}
 
     @Override
     public int finalScore() {

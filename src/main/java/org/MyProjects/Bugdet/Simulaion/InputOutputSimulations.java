@@ -26,7 +26,7 @@ public abstract class InputOutputSimulations extends Budget {
                 2,
                 130,
                 LocalDate.of(2023, 2, 13),
-                "BANK",
+                "CASH",
                 "LIDL"));
 
         recordHashMap.put(Expenses.getId(), new Expenses(
@@ -40,7 +40,7 @@ public abstract class InputOutputSimulations extends Budget {
                 7,
                 60,
                 LocalDate.of(2023, 2, 11),
-                "BANK",
+                "CASH",
                 "-"));
 
         recordHashMap.put(Expenses.getId(), new Expenses(
@@ -80,7 +80,7 @@ public abstract class InputOutputSimulations extends Budget {
                 2,
                 130,
                 LocalDate.of(2023, 2, 13),
-                "BANK",
+                "CASH",
                 "LIDL"));
 
         records.add(new Expenses(
@@ -94,7 +94,7 @@ public abstract class InputOutputSimulations extends Budget {
                 7,
                 60,
                 LocalDate.of(2023, 2, 11),
-                "BANK",
+                "CASH",
                 "-"));
 
         records.add(new Expenses(

@@ -1,12 +1,13 @@
 package org.MyProjects.Bugdet.records;
 
 import java.time.LocalDate;
+
 public class Income extends Record {
     private final static String INFO = "%2s | %-8s | %-17s | %14s$ " +
             "| %10s | %-10s | %s \n";
     private String sourceOfIncome;
 
-    public Income(int money, LocalDate date, String sourceOfIncome, String orderType, String additionalInfo) {
+    public Income(double money, LocalDate date, String sourceOfIncome, String orderType, String additionalInfo) {
         super(money, date, orderType, additionalInfo);
         this.sourceOfIncome = sourceOfIncome;
         recordType = RecordType.INCOME;
@@ -26,7 +27,7 @@ public class Income extends Record {
                 getObjId(),
                 getRecordType(),
                 getSourceOfIncome(),
-                getMoney(),
+                printMoneyWithDoubleFormat(getMoney()),
                 getDate(),
                 getOrderType(),
                 getAdditionalInfo());
