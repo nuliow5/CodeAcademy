@@ -1,4 +1,4 @@
-package org.TrainingInFreeTime;
+package org.TrainingInFreeTime.BasicTasks;
 
 import java.util.ArrayList;
 

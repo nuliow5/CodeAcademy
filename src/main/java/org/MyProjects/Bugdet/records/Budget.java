@@ -180,6 +180,7 @@ public class Budget implements InputOutput {
     }
 
     public void printOnlyIncome() {
+        sumAllIncome = 0;
         Information.printIncomingTop();
         for (int i = 0; i < getIncomeList().size(); i++) {
             getIncomeList().get(i).printIncomeInfo();
@@ -297,7 +298,7 @@ public class Budget implements InputOutput {
                 }
             }
 
-            String covertInformation = "" + record.getMoney();
+            String covertInformation = "" + printMoneyWithDoubleFormat(record.getMoney());
             while (true) {
                 Information.changeQuestion("money [$]", covertInformation);
                 int yesNo = Integer.parseInt(scanner.next());

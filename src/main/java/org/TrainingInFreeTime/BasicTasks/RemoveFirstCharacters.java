@@ -1,4 +1,4 @@
-package org.TrainingInFreeTime;
+package org.TrainingInFreeTime.BasicTasks;
 
 public class RemoveFirstCharacters {
     public static void main(String[] args) {
