@@ -9,10 +9,14 @@ public class Knight extends PieceCommon{
 
     public Knight(PieceColorType colorType) {
         super(colorType);
+
     }
 
     @Override
     public int[][] getMoveMap() {
         return new int[0][];
     }
+
+
+
 }

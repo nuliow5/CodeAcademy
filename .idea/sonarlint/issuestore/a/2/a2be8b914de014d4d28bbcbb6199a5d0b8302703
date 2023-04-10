@@ -1,0 +1,16 @@
+
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(µ»Í
+e
+java:S3252"JUse static access with "org.MyProjects.Bugdet.records.Record" for "getId".(ôÔñ·øÿÿÿÿ
+e
+java:S3252"JUse static access with "org.MyProjects.Bugdet.records.Record" for "getId".(Œš‹›úÿÿÿÿ
+e
+java:S3252"JUse static access with "org.MyProjects.Bugdet.records.Record" for "getId".(Œš‹›úÿÿÿÿ
+e
+java:S3252 "JUse static access with "org.MyProjects.Bugdet.records.Record" for "getId".(Œš‹›úÿÿÿÿ
+e
+java:S3252'"JUse static access with "org.MyProjects.Bugdet.records.Record" for "getId".(Œš‹›úÿÿÿÿ
+e
+java:S3252."JUse static access with "org.MyProjects.Bugdet.records.Record" for "getId".(Œš‹›úÿÿÿÿ
+e
+java:S32525"JUse static access with "org.MyProjects.Bugdet.records.Record" for "getId".(Œš‹›úÿÿÿÿ

@@ -8,10 +8,11 @@ public class Registra {
     static HashMap<Integer, Car> registerList = new HashMap<>();
     private static final String stingFormat = "%20s, | %8s, | %11s, | Owner - %s \n";
 
-    Registra(){
+    Registra() {
 
     }
-    public void startProgram(){
+
+    public void startProgram() {
         simulation();
 
         printAllRegisterList(registerList);
@@ -27,11 +28,11 @@ public class Registra {
     }
 
 
-    public static void simulation(){
+    public static void simulation() {
         registerList.put(1, new Car(
                 "vw passat",
                 "AAB123",
-                LocalDate.of(2022, 2,3),
+                LocalDate.of(2022, 2, 3),
                 "Petras"));
 
         registerList.put(2, new Car(
@@ -53,9 +54,9 @@ public class Registra {
                 "Petras"));
     }
 
-    public void printAllRegisterList(HashMap<Integer, Car> hashMap){
+    public void printAllRegisterList(HashMap<Integer, Car> hashMap) {
 
-        for (Map.Entry<Integer, Car> entry : hashMap.entrySet()){
+        for (Map.Entry<Integer, Car> entry : hashMap.entrySet()) {
             System.out.printf(stingFormat,
                     hashMap.get(entry.getKey()).getCarModel(),
                     hashMap.get(entry.getKey()).getCarNumber(),
@@ -65,9 +66,10 @@ public class Registra {
 
         }
     }
-    public void printCarOwner(HashMap<Integer, Car> hashMap, String carNumber){
-        for (Map.Entry<Integer, Car> entry : hashMap.entrySet()){
-            if (carNumber.equals(hashMap.get(entry.getKey()).getCarNumber())){
+
+    public void printCarOwner(HashMap<Integer, Car> hashMap, String carNumber) {
+        for (Map.Entry<Integer, Car> entry : hashMap.entrySet()) {
+            if (carNumber.equals(hashMap.get(entry.getKey()).getCarNumber())) {
                 System.out.println(carNumber + " OWNER IS "
                         + hashMap.get(entry.getKey()).getCarOwner()
                         + " and car model is - "
@@ -78,24 +80,21 @@ public class Registra {
         }
     }
 
-    public void printCarNumbers(HashMap<Integer, Car> hashMap, int year){
-        for (Map.Entry<Integer, Car> entry : hashMap.entrySet()){
-            if (year == hashMap.get(entry.getKey()).getRegisterDate().getYear()){
+    public void printCarNumbers(HashMap<Integer, Car> hashMap, int year) {
+        for (Map.Entry<Integer, Car> entry : hashMap.entrySet()) {
+            if (year == hashMap.get(entry.getKey()).getRegisterDate().getYear()) {
                 System.out.println(year + " registered " + hashMap.get(entry.getKey()).getCarNumber());
             }
         }
     }
 
-    public void printOwnerInfo(HashMap<Integer, Car> hashMap, String carModel){
-        for (Map.Entry<Integer, Car> entry : hashMap.entrySet()){
-            if (carModel.equals(hashMap.get(entry.getKey()).getCarModel())){
+    public void printOwnerInfo(HashMap<Integer, Car> hashMap, String carModel) {
+        for (Map.Entry<Integer, Car> entry : hashMap.entrySet()) {
+            if (carModel.equals(hashMap.get(entry.getKey()).getCarModel())) {
                 System.out.println(carModel + " have " + hashMap.get(entry.getKey()).getCarOwner());
             }
         }
     }
-
-
-
 
 
 }

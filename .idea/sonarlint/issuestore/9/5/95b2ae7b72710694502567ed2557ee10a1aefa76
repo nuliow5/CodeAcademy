@@ -1,0 +1,19 @@
+
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ÌüƒÆıÿÿÿÿ
+S	java:S106"9Replace this use of System.out or System.err by a logger.(¡®ÏÁüÿÿÿÿ
+N	java:S106"9Replace this use of System.out or System.err by a logger.(Èæêë
+N	java:S106"9Replace this use of System.out or System.err by a logger.(ª›ô
+N	java:S106"9Replace this use of System.out or System.err by a logger.(¦ĞİÅ
+J
+java:S1172""/Remove this unused method parameter "rowIndex".(ïÜÈÿÿÿÿÿ
+N	java:S106#"9Replace this use of System.out or System.err by a logger.(ÄÁò’
+N	java:S106$"9Replace this use of System.out or System.err by a logger.(ÜÜ²ş
+E
+java:S1481%"0Remove this unused "pieceObject" local variable.(Ş­½'
+N	java:S106'"9Replace this use of System.out or System.err by a logger.(ìğ±È
+M
+java:S1135&"2Complete the task associated to this TODO comment.(•ß‡Áøÿÿÿÿ
+N	java:S106*"9Replace this use of System.out or System.err by a logger.(ÜÜ²ş
+N	java:S106-"9Replace this use of System.out or System.err by a logger.(ÄÁò’
+H
+java:S11352"2Complete the task associated to this TODO comment.(Ù¶©“

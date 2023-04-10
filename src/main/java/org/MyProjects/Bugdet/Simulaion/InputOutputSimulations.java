@@ -61,7 +61,6 @@ public abstract class InputOutputSimulations extends Budget {
 
     public static void simulateWithRecords() {
 
-
         records.add(new Income(
                 4200,
                 LocalDate.of(2023, 2, 5),

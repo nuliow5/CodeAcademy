@@ -1,0 +1,11 @@
+
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ÌüƒÆıÿÿÿÿ
+P
+java:S1118":Add a private constructor to hide the implicit public one.(ñã¸á
+P
+java:S2479":Remove the non-escaped \u3000 character from this literal.(¦ö
+Q	java:S125"<This block of commented-out lines of code should be removed.(¦ö
+U
+java:S2479":Remove the non-escaped \u3000 character from this literal.(ÀÙúÿÿÿÿ
+U
+java:S2479":Remove the non-escaped \u3000 character from this literal.(ŞİØ«ıÿÿÿÿ

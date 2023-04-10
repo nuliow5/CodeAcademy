@@ -15,6 +15,7 @@ public class Record {
     protected RecordType recordType;
 
     private static int id = new BudgetDataFile().readIndexFromFile();
+
     private int objId;
 
     public Record(double money, LocalDate date, String orderType, String additionalInfo) {
@@ -24,7 +25,6 @@ public class Record {
         this.additionalInfo = additionalInfo;
         id++;
         this.objId += id;
-
 
     }
 
@@ -56,10 +56,10 @@ public class Record {
     @Override
     public String toString() {
         return ",\"" + objId + "\"" +
-               ",\"" + printMoneyWithDoubleFormat(money) + "\"" +
-               ",\"" + date + "\"" +
-               ",\"" + orderType + "\"" +
-               ",\"" + additionalInfo + "\"";
+                ",\"" + printMoneyWithDoubleFormat(money) + "\"" +
+                ",\"" + date + "\"" +
+                ",\"" + orderType + "\"" +
+                ",\"" + additionalInfo + "\"";
 
     }
 
@@ -72,7 +72,7 @@ public class Record {
 
     }
 
-    public String returnObjId(){
+    public String returnObjId() {
         return "" + objId;
     }
 
@@ -96,7 +96,7 @@ public class Record {
         this.additionalInfo = additionalInfo;
     }
 
-    public void printRecord(String getValue){
+    public void printRecord(String getValue) {
         System.out.printf("\u001B[30m\u001B[43m" + INFO,
                 getObjId(),
                 getRecordType(),
@@ -105,10 +105,9 @@ public class Record {
                 getDate(),
                 getOrderType(),
                 getAdditionalInfo());
-
     }
 
-    public static String printMoneyWithDoubleFormat(double money){
+    public static String printMoneyWithDoubleFormat(double money) {
         return String.format(DOUBLE_FORMAT, money);
     }
 

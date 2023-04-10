@@ -14,7 +14,6 @@ import static org.MyProjects.Bugdet.records.Order.getOrderTypeIndex;
 import static org.MyProjects.Bugdet.records.Order.printOrderTypes;
 import static org.MyProjects.Bugdet.records.Record.printMoneyWithDoubleFormat;
 
-
 public class Budget implements InputOutput {
     private static final String FULL_COST_INFORMATION = "%20s | %-10s | %s\n";
 
@@ -23,7 +22,7 @@ public class Budget implements InputOutput {
 
     protected ArrayList<ExpensObj> expensObjArrayList = new ArrayList<>();
     private int sumAllIncome;
-    Scanner scanner = new Scanner(System.in);
+    private static Scanner scanner = new Scanner(System.in);
 
     BudgetDataFile budgetDataFile = new BudgetDataFile();
     private String orderType;
@@ -407,8 +406,10 @@ public class Budget implements InputOutput {
             Information.firstMainQuestCompanyName();
             String sourceOfIncome = scanner.next();
 
+
             Information.firstMainQuestIncomeMoney();
-            double incomeMoney = Double.parseDouble(scanner.next());
+            double incomeMoney = setMoney();
+
 
             LocalDate localDate = setLocalDate();
 
@@ -431,6 +432,8 @@ public class Budget implements InputOutput {
         }
 
     }
+
+
 
 
     private final LocalDate setLocalDate() {
@@ -484,14 +487,26 @@ public class Budget implements InputOutput {
         return null;
 
     }
+    private static double setMoney(){
+            while (true){
 
+                double incomeMoney = Double.parseDouble(scanner.next());
+                if (incomeMoney > 0){
+                    return incomeMoney;
+                }
+                else {
+                    Information.badInput("try again!");
+                }
+            }
+
+    }
     private void fillExpenses() {
 
         try {
             expensesIndex = fillExpensesExpCategory();
 
             Information.secondMainQuestExpensesMoney();
-            double expensesMoney = Double.parseDouble(scanner.next());
+            double expensesMoney = setMoney();
 
             LocalDate localDate = setLocalDate();
 

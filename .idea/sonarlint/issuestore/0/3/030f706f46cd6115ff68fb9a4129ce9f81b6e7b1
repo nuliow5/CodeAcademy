@@ -1,0 +1,34 @@
+
+`
+java:S1192/"JDefine a constant instead of duplicating this literal "Error404 " 3 times.(š¢ô©
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.( ÔÁ“ÿÿÿÿÿ
+b
+java:S2095@"LUse try-with-resources or close this "BufferedReader" in a "finally" clause.(¦©Ö©
+b
+java:S2095&"LUse try-with-resources or close this "BufferedReader" in a "finally" clause.(Š…Ê
+N	java:S106"9Replace this use of System.out or System.err by a logger.(ìßİº
+L
+java:S3984 "6Throw this exception or remove this useless statement.(˜ĞÌ¾
+S	java:S106("9Replace this use of System.out or System.err by a logger.(Ôû§Ñüÿÿÿÿ
+S	java:S106*"9Replace this use of System.out or System.err by a logger.(äÆŞÿÿÿÿÿ
+S	java:S106,"9Replace this use of System.out or System.err by a logger.(ªÓ¼áşÿÿÿÿ
+L
+java:S3984/"6Throw this exception or remove this useless statement.(š¢ô©
+S	java:S1067"9Replace this use of System.out or System.err by a logger.(ŠºìÏúÿÿÿÿ
+L
+java:S3984:"6Throw this exception or remove this useless statement.(˜ĞÌ¾
+Q	java:S125D"<This block of commented-out lines of code should be removed.(‡ÛÇ
+S	java:S106H"9Replace this use of System.out or System.err by a logger.(ªÓ¼áşÿÿÿÿ
+L
+java:S3984K"6Throw this exception or remove this useless statement.(š¢ô©
+M	java:S106T"9Replace this use of System.out or System.err by a logger.(¯üœ`
+N	java:S106f"9Replace this use of System.out or System.err by a logger.(…¿ºÄ
+L
+java:S3984i"6Throw this exception or remove this useless statement.(š¢ô©
+C
+java:S1128	"-Remove this unused import 'java.time.ZoneId'.( Æ½“
+O
+java:S1128
+"4Remove this unused import 'java.time.ZonedDateTime'.(Å¯Ğ©ûÿÿÿÿ
+F
+java:S1128"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ

@@ -1,4 +1,4 @@
-package org.Basic;
+package org.Basic.basicFirst;
 
 public class BasicTwo {
     public static void main(String[] args) {

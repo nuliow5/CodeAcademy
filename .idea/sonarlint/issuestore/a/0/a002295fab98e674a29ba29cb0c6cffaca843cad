@@ -1,0 +1,31 @@
+
+a
+java:S1192l"KDefine a constant instead of duplicating this literal "try again!" 7 times.(î’à¥
+s	java:S135Y"YReduce the total number of break and continue statements in this loop to use at most one.(˜ïˆžÿÿÿÿÿ
+t	java:S135˜"YReduce the total number of break and continue statements in this loop to use at most one.(˜ïˆžÿÿÿÿÿ
+t	java:S135­"YReduce the total number of break and continue statements in this loop to use at most one.(˜ïˆžÿÿÿÿÿ
+t	java:S135¾"YReduce the total number of break and continue statements in this loop to use at most one.(˜ïˆžÿÿÿÿÿ
+t	java:S135Í"YReduce the total number of break and continue statements in this loop to use at most one.(˜ïˆžÿÿÿÿÿ
+t	java:S135Ü"YReduce the total number of break and continue statements in this loop to use at most one.(˜ïˆžÿÿÿÿÿ
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(À€œúýÿÿÿÿ
+—
+java:S1186!"€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.(Î¥þî
+1
+java:S3626M"Remove this redundant jump.(ÉŠ©ƒ
+P
+java:S2209g"5Change this instance-reference to a static reference.(Û¡žéøÿÿÿÿ
+P
+java:S2209h"5Change this instance-reference to a static reference.(‘„ñ…ùÿÿÿÿ
+P
+java:S6213y":Rename this variable to not match a restricted identifier.(“ŸüÊ
+T	java:S106Â"9Replace this use of System.out or System.err by a logger.(ªÓ¼áþÿÿÿÿ
+T	java:S106æ"9Replace this use of System.out or System.err by a logger.(ÐÓÕ–ûÿÿÿÿ
+n
+java:S3776€"RRefactor this method to reduce its Cognitive Complexity from 57 to the 15 allowed.(‘ÎŠÄþÿÿÿÿ
+V
+java:S6213€":Rename this variable to not match a restricted identifier.(‘ÎŠÄþÿÿÿÿ
+T	java:S106†"9Replace this use of System.out or System.err by a logger.(³íš•ýÿÿÿÿ
+T	java:S106™"9Replace this use of System.out or System.err by a logger.(³íš•ýÿÿÿÿ
+R	java:S125¹"<This block of commented-out lines of code should be removed.(¶ŠåÌ
+K
+java:S1144†"4Remove this unused private "setIntegerValue" method.(åÖÂ¯

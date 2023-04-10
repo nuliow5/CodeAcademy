@@ -1,0 +1,4 @@
+
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(Ú¡°èýÿÿÿÿ
+d
+java:S6206"IRefactor this class declaration to use 'record Coordinate(int x, int y)'.(³¸¢Éþÿÿÿÿ

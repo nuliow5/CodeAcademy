@@ -1,0 +1,12 @@
+
+^
+java:S1192
+"HDefine a constant instead of duplicating this literal "Obuolys" 3 times.(è˜Ùï
+g	java:S101"MRename this class name to match the regular expression '^[A-Z][a-zA-Z0-9]*$'.(óÎ °ùÿÿÿÿ
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ôÄ½áøÿÿÿÿ
+S	java:S106"9Replace this use of System.out or System.err by a logger.(ÉëÕ²ÿÿÿÿÿ
+M	java:S106"9Replace this use of System.out or System.err by a logger.(ëÀ†
+M	java:S106"9Replace this use of System.out or System.err by a logger.(­÷Òd
+S	java:S106"9Replace this use of System.out or System.err by a logger.(ºş‘ˆúÿÿÿÿ
+N	java:S106"9Replace this use of System.out or System.err by a logger.(»î´ô
+S	java:S106"9Replace this use of System.out or System.err by a logger.(ËÜÒôüÿÿÿÿ

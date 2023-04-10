@@ -1,0 +1,6 @@
+
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(¡ê•ó
+T
+java:S5993"9Change the visibility of this constructor to "protected".(Çý½Óúÿÿÿÿ
+o
+java:S3038"T"getMoveMap" is defined in the "Piece" interface and can be removed from this class.(þ’¹”ýÿÿÿÿ

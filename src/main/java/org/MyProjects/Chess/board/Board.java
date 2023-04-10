@@ -2,12 +2,14 @@ package org.MyProjects.Chess.board;
 
 import org.MyProjects.Chess.piece.Piece;
 
+
 import static org.MyProjects.Chess.board.BoardConstants.BORDER_VERTICAL;
 import static org.MyProjects.Chess.board.BoardConstants.BOTTOM_LETTERS_WITH_BORDER;
 import static org.MyProjects.Chess.board.BoardConstants.CELL;
 import static org.MyProjects.Chess.board.BoardConstants.DIGIT;
 import static org.MyProjects.Chess.board.BoardConstants.SPACE;
 import static org.MyProjects.Chess.board.BoardConstants.TOP_LETTERS_WITH_BORDER;
+
 
 
 public class Board {
@@ -20,6 +22,8 @@ public class Board {
             System.out.print(DIGIT.charAt(i));
             drawPiece(piecesOnBoard, i);
             System.out.println(DIGIT.charAt(i));
+
+
         }
 
         System.out.println(BOTTOM_LETTERS_WITH_BORDER);
@@ -33,8 +37,11 @@ public class Board {
         for (Piece[] pieceObject : piecesOnBoard) {
             // TODO: code in this loop block should be changed to draw pieces, below 2 lines are example for board rendering as result
             System.out.print(CELL);
+
+
             System.out.print(SPACE);
         }
+
         System.out.print(BORDER_VERTICAL);
     }
 
@@ -58,6 +65,11 @@ public class Board {
          *  ╚══════════════════════╝
          * 　　A　B　C　D　E　F　G　H
          */
+
+
+
+
+
     }
 
 
